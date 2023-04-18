@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./day3/素材/lib/axios.js"></script>
+</head>
+<body>
+    <button id="btn1">发起请求</button>
+    <button id="btn2"> 发起请求2</button>
+    <button id="btn3">发起axios请求</button>
+
+
+    <script>
+        document.querySelector('#btn1').addEventListener('click',function(e){
+            let url = 'http://www.liulongbin.top:3006/api/get'
+            let paramsObj= {
+                name:'shk',
+                age: 26
+            }
+            axios.get(url,{params:paramsObj}).then(function(res){
+                console.log(res);
+
+            })
+        })
+        document.querySelector('#btn2').addEventListener('click',function(){
+            let url = 'http://www.liulongbin.top:3006/api/post'
+            let dataObj = {
+                address:'北京',
+                location:'东北角',
+            }
+            axios.post(url,dataObj).then(function(res){
+                console.log(res.data);
+            })
+
+        })
+        document.querySelector('#btn3'),addEventListener('click',function(){
+            let url = 'http://www.liulongbin.top:3006/api/get'
+            let paramsData = {name:'大柱子',age:'500'}
+           axios({
+            method:'get',
+            url: url,
+            params:paramsData
+           }).then(function(res){
+                console.log(res.data);
+           })
+
+        })
+        
+
+    </script>
+</body>
+</html>

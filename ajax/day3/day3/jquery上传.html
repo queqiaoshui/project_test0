@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../day3/code/lib/jquery.js"></script>
+</head>
+<body>
+    <input type="file" id="file1">
+    <button id="btnUpload">上传</button>
+
+    <img src="../day3/素材/loading.gif" alt="" style="display: none;" id="loading">
+
+
+
+    <script>
+        $(function(){
+            $(document).ajaxStart(function(e){
+                $('#loading').show()
+            })
+            $(document).ajaxStop(function(){
+                $('#loading').hide()
+            })
+            $('#btnUpload').on('click',function(e){
+                let files = $('#file1')[0].files
+                if (files.length <= 0){
+                    return alert('请选择文件')
+                }
+                let fd = new FormData()
+                fd.append('avatar',files[0])
+                $.ajax({
+                    method: 'POST',
+                    url: 'http://www.liulongbin.top:3006/api/upload/avatar',
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function(res){
+                        console.log(res);
+                    }
+                })
+
+            })
+        })
+    </script>
+</body>
+</html>

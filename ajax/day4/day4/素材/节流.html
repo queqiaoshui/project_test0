@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+    <style>
+        html,
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #angel {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="./angel.gif" alt="" id="angel">
+
+
+    <script>
+        $(function(){
+            let angel = $('#angel')
+            let timer = null
+            $(document).on('mousemove',function(e){
+                // $('#angel').css('left',e.pageX+'px').css('top',e.pageY+'px')
+                // $('#angel').style('left',e.pageX+'px')
+                // let left = e.pageX + 'px'
+                // let top = e.pageY + 'px'
+                // if(timer){
+                //     return
+
+                // }
+                // jiuLiu(left,top)
+                if(timer) return
+                timer = setTimeout(function(){
+                    $('#angel').css('left',e.pageX+'px').css('top',e.pageY+'px')
+                    // timer = null
+                    // clearTimeout(timer)
+                    console.log(timer);
+                },1000)
+                    
+            })
+
+
+           
+            // function jiuLiu(left,top){
+            //     timer = setTimeout(function(){$('#angel').css('left',left).css('top',top);timer = null},1000)
+            // }
+        })
+    </script>
+</body>
+</html>
